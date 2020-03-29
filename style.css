@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
-  --modla-duration: 1s;
+  --modla-duration: 400ms;
   --primary-color: #30336b;
   --secondary-color: #be2edd;
 }
@@ -15,6 +15,13 @@
 body {
   font-family: 'Lato', sans-serif;
   margin: 0;
+  /* overflow: hidden; */
+  transition: transform 250ms ease-in;
+}
+
+/* When body has class "nav-open" */
+body.nav-open {
+  transform: translateX(200px); /* Width of the nav is 200px!!! */
 }
 
 /* BUTTONS */
@@ -60,6 +67,7 @@ nav .logo img {
 
 nav ul {
   list-style-type: none;
+  padding: 0;
 }
 
 nav ul li {
@@ -130,6 +138,10 @@ header p {
   bottom: 0;
 }
 
+.modal-container.modal-open {
+  display: block;
+}
+
 .modal {
   background-color: #fff;
   border-radius: 5px;
@@ -141,7 +153,8 @@ header p {
   transform: translate(-50%, -50%);
   max-width: 100%;
   width: 400px;
-  /* animation */
+  animation-name: modalopen;
+  animation-duration: var(--modla-duration);
 }
 
 .close-btn {
@@ -188,3 +201,13 @@ header p {
   border: 1px solid #000;
 }
 /* END MODAL */
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
